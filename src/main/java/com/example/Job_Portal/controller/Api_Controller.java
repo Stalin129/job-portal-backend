@@ -250,6 +250,8 @@ public class Api_Controller {
     @PostMapping("/postjobs")
     public ResponseEntity<?> jobs(@RequestBody Jobs data) {
         try {
+            data.setRole(data.getRole().trim());
+            data.setLocation(data.getLocation().trim());
             jobsRepository.save(data);
 
             return ResponseEntity.ok("posted");
